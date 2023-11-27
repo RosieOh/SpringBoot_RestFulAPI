@@ -1,7 +1,8 @@
 package com.pro06.controller;
 
-import com.pro06.dto.MemberJoinDTO;
-import com.pro06.service.MemberService;
+
+import com.shop.dto.MemberJoinDTO;
+import com.shop.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,46 +18,46 @@ import java.security.Principal;
 @Log4j2
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/member/*")
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
 
     @GetMapping("/join")
-    public String joinGET() {
-        log.info("============ 회원가입 GET 시작 ============");
+    public String joinGET(){
+        log.info("join get...");
         return "member/join";
     }
 
     @PostMapping("/join")
-    public String joinPOST(MemberJoinDTO memberJoinDTO, RedirectAttributes redirectAttributes) {
-        log.info("============ 회원가입 POST 시작 ============");
+    public String joinPOST(MemberJoinDTO memberJoinDTO, RedirectAttributes redirectAttributes){
+        log.info("join post...");
         log.info(memberJoinDTO);
         try {
             memberService.join(memberJoinDTO);
-        } catch (MemberService.MemberExistException e) {
-            redirectAttributes.addFlashAttribute("error", "id");
+        } catch (MemberService.MidExistException e) {
 
+            redirectAttributes.addFlashAttribute("error", "mid");
             return "redirect:/member/join";
         }
         redirectAttributes.addFlashAttribute("result", "success");
-        return "redirect:/member/login";
+        return "redirect:/member/login"; //회원 가입 후 로그인
     }
 
     @GetMapping("/login")
-    public String loginGET() {
-        log.info("============ 로그인 GET 시작 ============");
+    public String loginGet(){
+        log.info("/login get ...........");
         return "member/login";
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER')") //로그인하여 USER 롤이 있는 경우만
     @GetMapping("/mypage")
-    public String myPage(Principal principal, Model model) {
-        String id = principal.getName();
-        MemberJoinDTO memberJoinDTO = memberService.MemberMyAccountinfo(id);
-        log.info("========== MemberMyAccountInfo==========");
-        log.info(memberJoinDTO);
-        model.addAttribute("memberJoinDTO", memberJoinDTO);
+    public String myPage(Principal principal, Model model){
+        String mid = principal.getName();
+        MemberJoinDTO memberDto = memberService.myinfo(mid);
+        log.info("----- MyInfo -----");
+        log.info(memberDto);
+        model.addAttribute("memberDto",memberDto);
         return "member/mypage";
     }
 }

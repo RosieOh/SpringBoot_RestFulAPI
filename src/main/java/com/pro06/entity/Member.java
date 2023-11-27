@@ -5,10 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import lombok.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
+//사용자 Member 객체
 @Entity
 @Getter
 @Builder
@@ -18,32 +18,39 @@ import java.util.Set;
 public class Member extends BaseEntity{
 
     @Id
-    private String id;
-    private String pw;
+    private String mid;
+    private String mpw;
     private String email;
     private boolean del;
     private boolean social;
-
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
-    public void changePassword(String pw) {
-        this.pw = pw;
-    }
+    @Id
+    private Long id;
 
-    public void changeDel(boolean del) {
+    public void changePassword(String mpw ){
+        this.mpw = mpw;
+    }
+    public void changeEmail(String email){
+        this.email = email;
+    }
+    public void changeDel(boolean del){
         this.del = del;
     }
-
-    public void addRole(MemberRole memberRole) {
+    public void addRole(MemberRole memberRole){
         this.roleSet.add(memberRole);
     }
-
     public void clearRoles() {
         this.roleSet.clear();
     }
+    public void changeSocial(boolean social){this.social = social;}
 
-    public void changeSocial(boolean social){
-        this.social = social;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
