@@ -46,13 +46,6 @@ public class BoardController {
         return "redirect:/board/list";
     }
 
-    @GetMapping("/read")
-    public String read(Long bno, Model model) {
-        BoardDTO boardDTO = boardService.readOne(bno);
-        model.addAttribute("boardDTO", boardDTO);
-        return "board/read";
-    }
-
     @GetMapping("/modify")
     public String modifyForm(Long bno, Model model) {
         BoardDTO boardDTO = boardService.readOne(bno);

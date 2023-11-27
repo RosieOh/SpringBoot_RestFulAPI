@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class BoardListReplyDTO {
+public class BoardListReplyCountDTO {
     private Long bno;
 
     private String title;
