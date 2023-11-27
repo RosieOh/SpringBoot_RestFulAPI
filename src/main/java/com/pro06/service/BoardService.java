@@ -1,9 +1,6 @@
 package com.pro06.service;
 
-import com.pro06.domain.BoardDTO;
-import com.pro06.entity.Board;
-
-import java.util.List;
+import com.pro06.dto.BoardDTO;
 
 public interface BoardService {
 

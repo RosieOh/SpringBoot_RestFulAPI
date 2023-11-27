@@ -1,9 +1,8 @@
 package com.pro06.controller;
 
-import com.pro06.domain.BoardDTO;
-import com.pro06.domain.PageRequestDTO;
+import com.pro06.dto.BoardDTO;
+import com.pro06.dto.PageRequestDTO;
 import com.pro06.service.BoardService;
-import com.pro06.service.BoardServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

@@ -1,6 +1,6 @@
 package com.pro06.service;
 
-import com.pro06.domain.BoardDTO;
+import com.pro06.dto.BoardDTO;
 import com.pro06.entity.Board;
 import com.pro06.repository.BoardRepository;
 import jakarta.transaction.Transactional;

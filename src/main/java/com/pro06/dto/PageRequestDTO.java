@@ -1,4 +1,4 @@
-package com.pro06.domain;
+package com.pro06.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

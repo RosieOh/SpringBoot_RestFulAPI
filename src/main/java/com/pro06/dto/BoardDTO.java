@@ -1,4 +1,4 @@
-package com.pro06.domain;
+package com.pro06.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
