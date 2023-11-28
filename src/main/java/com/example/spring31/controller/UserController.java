@@ -1,7 +1,7 @@
-package com.example.spring31.ctrl;
+package com.example.spring31.controller;
 
 import com.example.spring31.dto.Euser;
-import com.example.spring31.excep.NoSuchDataException;
+import com.example.spring31.excepion.NoSuchDataException;
 import com.example.spring31.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -10,10 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @Controller

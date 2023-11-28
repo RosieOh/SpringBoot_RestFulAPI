@@ -1,4 +1,4 @@
-package com.example.spring31.ctrl;
+package com.example.spring31.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

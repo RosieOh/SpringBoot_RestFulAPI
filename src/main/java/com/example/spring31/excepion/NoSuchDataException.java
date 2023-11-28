@@ -1,4 +1,4 @@
-package com.example.spring31.excep;
+package com.example.spring31.excepion;
 
 public class NoSuchDataException extends RuntimeException {
     public NoSuchDataException(String message){
